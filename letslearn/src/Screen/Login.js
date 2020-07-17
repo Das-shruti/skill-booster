@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, TextInput ,} from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { LoginButton, AccessToken, GraphRequest, GraphRequestManager, } from 'react-native-fbsdk';
 import { GoogleSignin, GoogleSigninButton, statusCodes, } from 'react-native-google-signin';
 import Icon from '../Assets/Icon'
-
 
 class Login extends Component {
     constructor(props) {
@@ -33,7 +32,8 @@ class Login extends Component {
     _isSignedIn = async () => {
         const isSignedIn = await GoogleSignin.isSignedIn();
         if (isSignedIn) {
-            alert('User is already signed in');
+            this.props.navigation.navigate('Interducing')
+                        // alert('User is already signed in');
             //Get the User details as user is already signed in
             this._getCurrentUserInfo();
         } else {
@@ -70,6 +70,7 @@ class Login extends Component {
             const userInfo = await GoogleSignin.signIn();
             console.log('User Info --> ', userInfo);
             this.setState({ userInfo: userInfo });
+            this.props.navigation.navigate('Interducing')
         } catch (error) {
             console.log('Message', error.message);
             if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -106,6 +107,8 @@ class Login extends Component {
             this.setState({ user_name: 'Welcome' + ' ' + result.name });
             this.setState({ token: 'User Token: ' + ' ' + result.id });
             this.setState({ profile_pic: result.picture.data.url });
+            this.props.navigation.navigate('Interducing')
+
         }
     };
 
@@ -117,10 +120,11 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
+              
                 <View style={styles.login_here_container}>
                     <Text style={styles.login_here}>Login Here</Text>
                 </View>
-                <View style={styles.form_main_container}>
+                  {/* <View style={styles.form_main_container}>
                     <View style={styles.form_container}>
                         <View style={styles.inner_container}>
                             <View style={styles.user_name}>
@@ -159,16 +163,12 @@ class Login extends Component {
                             Login
                     </Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
                 <View style={styles.social_media_mainContainer}>
                     <View style={styles.social_container}>
                         <LoginButton
-
-
-style={{ width: hp('25%'), height: hp('7%') }}
-// ViewStyle={{backgroundColor:'red',height: hp('5%'), }}
-                            // style={{height: hp('5%'), width: wp('40%'), justifyContent: 'center', alignItems: 'center' }}
+                        style={{ width: hp('25%'), height: hp('7%') ,marginLeft:wp('1%')}}
                             readPermissions={['public_profile']}
                             onLoginFinished={(error, result) => {
                                 if (error) {

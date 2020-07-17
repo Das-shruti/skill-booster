@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from './Welcome'
 import Login from '../Screen/Login'
+import Interducing from "../Screen/Interducing";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ class Navigation extends Component {
                     <Stack.Screen name="Welcome" component={Welcome} />
                     {/* <Stack.Screen name="Welcome" component={Login} /> */}
                     <Stack.Screen name="Login" component={Login} />
+                    <Stack.Screen name="Interducing" component={Interducing} />
                 </Stack.Navigator>
             </NavigationContainer>
 

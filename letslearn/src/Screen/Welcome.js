@@ -27,18 +27,17 @@ class Welcome extends Component {
                     resizeMode="contain"
                     style={styles.logo_image}
                 />
-                <View style={styles.btn_}>
-                    <View style={styles.btn_container}>
-                        <TouchableOpacity style={styles.signin_btn} 
-                         onPress={() => this.signin_btn()}
-                        >
-                            <Text style={styles.btn_name}>Sign In</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.signin_btn}>
-                            <Text style={styles.btn_name}>Sign Up</Text>
-                        </TouchableOpacity>
-                    </View>
+                <View 
+                style={{width:wp('100%'), justifyContent:'center', alignItems:'center', }}
+                >
+                <TouchableOpacity 
+                style={{backgroundColor:'white',marginTop:hp('10%'),borderRadius:10, height:hp('6%'), width:wp('55%'), justifyContent:'center', alignItems:'center'}}
+                onPress={()=> this.props.navigation.navigate('Login')}
+                >
+                    <Text style={{fontSize:18}}>
+                        Login with social Account
+                    </Text>
+                </TouchableOpacity>
                 </View>
             </View>
         );
@@ -69,7 +68,9 @@ const styles = StyleSheet.create({
     },
     btn_: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems
+        
+        : 'center'
     },
     btn_container: {
         flexDirection: 'row',
