@@ -14,11 +14,12 @@ import Login from './src/Screen/Login'
 import Navigation from './src/Screen/Navigation'
 import Test from './src/Test'
 import Interducing from './src/Screen/Interducing'
+import WelcomeTutor from './src/Screen/WelcomeTutor'
 
 const App: () => React$Node = () => {
   return (
     <>
-      <Login/>
+      <WelcomeTutor/>
     </>
   ); 
 };
