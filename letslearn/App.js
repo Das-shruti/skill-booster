@@ -18,7 +18,7 @@ import Interducing from './src/Screen/Interducing'
 const App: () => React$Node = () => {
   return (
     <>
-      <Navigation/>
+      <Login/>
     </>
   ); 
 };
