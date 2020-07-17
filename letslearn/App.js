@@ -19,7 +19,7 @@ import WelcomeTutor from './src/Screen/WelcomeTutor'
 const App: () => React$Node = () => {
   return (
     <>
-      <WelcomeTutor/>
+      <Navigation/>
     </>
   ); 
 };
