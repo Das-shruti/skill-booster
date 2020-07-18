@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, ScrollView ,ImageBackground} from 'react-native';
 import Icon from '../Assets/Icon'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -49,6 +49,7 @@ class Interducing extends Component {
     }
     tutor = () => {
         this.setState({ learner: false, tutor: true })
+        this.props.navigation.navigate('WelcomeTutor')
     }
     learner = () => {
         this.setState({ learner: true, tutor: false })
@@ -80,6 +81,7 @@ class Interducing extends Component {
                 flexDirection: 'row',
                 // flexDirection:'row'
             }}>
+
                 <Image
                     source={item.Image}
                     resizeMode='contain'
@@ -96,6 +98,14 @@ class Interducing extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
+                <ImageBackground
+                    source={Icon.Background_Image}
+                    // resizeMethod="resize"
+                    // resizeMode="contain"
+                    style={{ height: hp('100%') }}
+                >
+
+              
                 <ScrollView>
                     <View style={{
                         flexDirection: 'row', width: wp('100%'),
@@ -211,7 +221,7 @@ class Interducing extends Component {
 
 
                 </ScrollView>
-
+                </ImageBackground>
             </View>
         );
     }

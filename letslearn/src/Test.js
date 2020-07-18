@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text} from 'react-native';
-
+import { Dropdown } from 'react-native-material-dropdown';
+ 
 class Test extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-
-
-     };
-  }
   render() {
+    let data = [{
+      value: 'Banana',
+    }, {
+      value: 'Mango',
+    }, {
+      value: 'Pear',
+    }];
+ 
     return (
-      <View>
-        <Text>
-          Hello...!
-        </Text>
-      </View>
+      <Dropdown
+        label='Favorite Fruit'
+        data={data}
+      />
     );
   }
 }
-
-export default Test;
+export default Test

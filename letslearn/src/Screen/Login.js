@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, TextInput, } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, TextInput,ImageBackground } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { LoginButton, AccessToken, GraphRequest, GraphRequestManager, } from 'react-native-fbsdk';
 import { GoogleSignin, GoogleSigninButton, statusCodes, } from 'react-native-google-signin';
@@ -120,6 +120,12 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
+<ImageBackground
+                    source={Icon.Background_Image}
+                    // resizeMethod="resize"
+                    // resizeMode="contain"
+                    style={{ height: hp('100%') }}
+                >
 
                 <View style={styles.login_here_container}>
                     <Text style={styles.login_here}>Login Here</Text>
@@ -300,7 +306,7 @@ class Login extends Component {
                     </View>
                 </View> */}
 
-
+</ImageBackground>
 
             </View>
         );

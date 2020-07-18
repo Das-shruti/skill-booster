@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Button, ImageBackground } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from '../Assets/Icon'
 
@@ -19,6 +19,14 @@ class Welcome extends Component {
     render() {
         return (
             <View style={styles.container}>
+                 <ImageBackground
+                    source={Icon.Background_Image}
+                    // resizeMethod="resize"
+                    // resizeMode="contain"
+                    style={{ height: hp('100%') }}
+                >
+
+               
                 <View style={styles.name_container}>
                     <Text style={styles.app_name}>Let's Learn</Text>
                 </View>
@@ -35,10 +43,11 @@ class Welcome extends Component {
                 onPress={()=> this.props.navigation.navigate('Login')}
                 >
                     <Text style={{fontSize:18}}>
-                        Login with social Account
+                        Login 
                     </Text>
                 </TouchableOpacity>
                 </View>
+                </ImageBackground>
             </View>
         );
     }

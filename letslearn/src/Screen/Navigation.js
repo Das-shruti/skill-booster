@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from './Welcome'
 import Login from '../Screen/Login'
 import Interducing from "../Screen/Interducing";
+import WelcomeTutor from '../Screen/WelcomeTutor'
+import Tutor_form from '../Screen/Tutor_form';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +25,8 @@ class Navigation extends Component {
                     {/* <Stack.Screen name="Welcome" component={Login} /> */}
                     <Stack.Screen name="Login" component={Login} />
                     <Stack.Screen name="Interducing" component={Interducing} />
+                    <Stack.Screen name="WelcomeTutor" component={WelcomeTutor} />
+                    <Stack.Screen name="Tutor_form" component={Tutor_form} />
                 </Stack.Navigator>
             </NavigationContainer>
 

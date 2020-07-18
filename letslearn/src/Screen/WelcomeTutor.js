@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text,TouchableOpacity, Image} from 'react-native';
+import {View, Text,TouchableOpacity, Image, ImageBackground} from 'react-native';
 import Icon from '../Assets/Icon'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -13,6 +13,14 @@ class WelcomeTutor extends Component {
     render() {
         return (
             <View>
+                 <ImageBackground
+                    source={Icon.Background_Image}
+                    // resizeMethod="resize"
+                    // resizeMode="contain"
+                    style={{ height: hp('100%') }}
+                >
+
+                
                <View>
                    <Image
                    source={Icon.Drawer_Icon}
@@ -38,10 +46,13 @@ class WelcomeTutor extends Component {
                </View>
 
                <View style={{ marginTop:hp('30%'),width:wp('100%'), justifyContent:'center',alignItems:'center'}}>
-                   <TouchableOpacity style={{backgroundColor:'green', borderRadius:10,width:wp('25%') , height:hp('5%'), justifyContent:'center', alignItems:'center'}}>
+                   <TouchableOpacity
+                   onPress={()=>{  this.props.navigation.navigate('Tutor_form')}}
+                   style={{backgroundColor:'green', borderRadius:10,width:wp('25%') , height:hp('5%'), justifyContent:'center', alignItems:'center'}}>
                        <Text style={{color:'white'}}>Go to Form</Text>
                    </TouchableOpacity>
                </View>
+               </ImageBackground>
             </View>
         );
     }
