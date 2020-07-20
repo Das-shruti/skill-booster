@@ -17,17 +17,17 @@ class Tutor_form extends Component {
         };
     }
     rate_ = () => {
-        this.setState({ rate: true })
+        this.setState({ rate: !this.state.rate })
     }
     price = () => {
-        this.setState({ price: true })
+        this.setState({ price:! this.state.price})
 
     }
     share = () => {
-        this.setState({ share: true })
+        this.setState({ share: ! this.state.share })
     }
     question = () => {
-        this.setState({ question: true })
+        this.setState({ question: ! this.state.question })
     }
     Price_ = () => {
         this.setState({ Price_: true, Free_: false })

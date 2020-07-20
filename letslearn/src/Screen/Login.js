@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, TextInput,ImageBackground } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, TextInput, ImageBackground } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { LoginButton, AccessToken, GraphRequest, GraphRequestManager, } from 'react-native-fbsdk';
 import { GoogleSignin, GoogleSigninButton, statusCodes, } from 'react-native-google-signin';
@@ -120,17 +120,17 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-<ImageBackground
+                <ImageBackground
                     source={Icon.Background_Image}
                     // resizeMethod="resize"
                     // resizeMode="contain"
                     style={{ height: hp('100%') }}
                 >
 
-                <View style={styles.login_here_container}>
-                    <Text style={styles.login_here}>Login Here</Text>
-                </View>
-                {/* <View style={styles.form_main_container}>
+                    <View style={styles.login_here_container}>
+                        <Text style={styles.login_here}>Login Here</Text>
+                    </View>
+                    {/* <View style={styles.form_main_container}>
                     <View style={styles.form_container}>
                         <View style={styles.inner_container}>
                             <View style={styles.user_name}>
@@ -170,66 +170,68 @@ class Login extends Component {
                     </Text>
                     </TouchableOpacity>
                 </View> */}
-                <View style={{height:hp('60%'), justifyContent:'center', alignItems:'center'}}>
-                <View style={{width:wp('100%'), justifyContent:'center', alignItems:'center', }}>
-                <View style={{
-                            //  marginLeft: wp('3%') ,
-                            width: wp('80%'), // whatever you want
-                            height: hp('8%'), // whatever you want
-                            justifyContent: 'center', // center the button
-                            backgroundColor: '#4267B2', // the same as the actual button
-                            paddingHorizontal: 10, // optionally add some horizontal padding for better looking
-                            borderRadius:10
-                        }}>
-                            <LoginButton
-                                // scope={'public_profile email'}
+                    <View style={{ height: hp('60%'), justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={{ width: wp('100%'), justifyContent: 'center', alignItems: 'center', }}>
+                            <View style={{
+                                //  marginLeft: wp('3%') ,
+                                width: wp('80%'), // whatever you want
+                                height: hp('8%'), // whatever you want
+                                justifyContent: 'center', // center the button
+                                backgroundColor: '#4267B2', // the same as the actual button
+                                paddingHorizontal: 10, // optionally add some horizontal padding for better looking
+                                borderRadius: 10
+                            }}>
+                                <LoginButton
+                                    // scope={'public_profile email'}
+                                    style={{
+
+                                        flex: 1, // fill the container
+                                        maxHeight: 30 // the default height
+                                    }}
+                                    readPermissions={['public_profile']}
+                                    onLoginFinished={(error, result) => {
+                                        if (error) {
+                                            alert(error);
+                                            alert('login has error: ' + result.error);
+                                        } else if (result.isCancelled) {
+                                            alert('login is cancelled.');
+                                        } else {
+                                            AccessToken.getCurrentAccessToken().then(data => {
+                                                alert(data.accessToken.toString());
+
+                                                const processRequest = new GraphRequest(
+                                                    '/me?fields=name,picture.type(large)',
+                                                    null,
+                                                    this.get_Response_Info
+                                                );
+                                                // Start the graph request.
+                                                new GraphRequestManager().addRequest(processRequest).start();
+                                            });
+                                        }
+                                    }}
+                                    onLogoutFinished={this.onLogout}
+                                />
+                            </View>
+
+                            <GoogleSigninButton
                                 style={{
-                                   
-                                    flex: 1, // fill the container
-                                    maxHeight: 30 // the default height
+                                    height: hp('8%'), width: wp('80%'),
+                                    //  marginLeft: wp('3%') 
+                                    marginTop: hp('5%')
                                 }}
-                                readPermissions={['public_profile']}
-                                onLoginFinished={(error, result) => {
-                                    if (error) {
-                                        alert(error);
-                                        alert('login has error: ' + result.error);
-                                    } else if (result.isCancelled) {
-                                        alert('login is cancelled.');
-                                    } else {
-                                        AccessToken.getCurrentAccessToken().then(data => {
-                                            alert(data.accessToken.toString());
-    
-                                            const processRequest = new GraphRequest(
-                                                '/me?fields=name,picture.type(large)',
-                                                null,
-                                                this.get_Response_Info
-                                            );
-                                            // Start the graph request.
-                                            new GraphRequestManager().addRequest(processRequest).start();
-                                        });
-                                    }
-                                }}
-                                onLogoutFinished={this.onLogout}
+                                // style={{ width: hp('25%'), height: hp('8%') }}
+                                size={GoogleSigninButton.Size.Wide}
+                                color={GoogleSigninButton.Color.Light}
+                                onPress={this._signIn}
                             />
+
                         </View>
 
-                        <GoogleSigninButton
-                            style={{height:hp('8%'), width:wp('80%'),
-                            //  marginLeft: wp('3%') 
-                            marginTop:hp('5%')}}
-                            // style={{ width: hp('25%'), height: hp('8%') }}
-                            size={GoogleSigninButton.Size.Wide}
-                            color={GoogleSigninButton.Color.Light}
-                            onPress={this._signIn}
-                        />
+                    </View>
 
-                </View>
 
-                </View>
-                
-                
 
-                {/* <View style={styles.social_media_mainContainer}>
+                    {/* <View style={styles.social_media_mainContainer}>
                     <View style={styles.social_container}>
                         <View style={{
                              marginLeft: wp('3%') ,
@@ -306,7 +308,7 @@ class Login extends Component {
                     </View>
                 </View> */}
 
-</ImageBackground>
+                </ImageBackground>
 
             </View>
         );

@@ -21,14 +21,14 @@ class WelcomeTutor extends Component {
                 >
 
                 
-               <View>
+               {/* <View>
                    <Image
                    source={Icon.Drawer_Icon}
                    resizeMethod="resize"
                    resizeMode="contain"
                    style={{ height: hp('5%'), width: wp('10%') }}
                    />
-               </View>
+               </View> */}
 
                <View style={{ height:hp('15%'),justifyContent:'center',alignItems:'center'}}>
                    <Text style={{fontSize:25}}>
