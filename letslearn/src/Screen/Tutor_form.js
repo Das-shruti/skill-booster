@@ -10,24 +10,41 @@ class Tutor_form extends Component {
         this.state = {
 
             name: "xyz",
-            rate: false,
             price: false,
             share: false,
-            question: false
+            question: false,
+
+            Technology: false,
+            isTechnology_selected: false,
+
+            Sport: false,
+            isSport_selected: false,
+
+            Cooking: false,
+            isCooking_selected: false,
+
+            Dancing: false,
+            isDancing_selected: false,
+
         };
     }
-    rate_ = () => {
-        this.setState({ rate: !this.state.rate })
+    Technology = () => {
+        this.setState({ Technology: !this.state.Technology, isTechnology_selected: !this.state.isTechnology_selected })
     }
-    price = () => {
-        this.setState({ price:! this.state.price})
-
+    Sport = () => {
+        this.setState({ Sport: !this.state.Sport, isSport_selected: !this.state.isSport_selected })
+    }
+    Cooking = () => {
+        this.setState({ Cooking: !this.state.Cooking, isCooking_selected: !this.state.isCooking_selected })
+    }
+    Dancing = () => {
+        this.setState({ Dancing: !this.state.Dancing, isDancing_selected: !this.state.isDancing_selected })
     }
     share = () => {
-        this.setState({ share: ! this.state.share })
+        this.setState({ share: !this.state.share })
     }
     question = () => {
-        this.setState({ question: ! this.state.question })
+        this.setState({ question: !this.state.question })
     }
     Price_ = () => {
         this.setState({ Price_: true, Free_: false })
@@ -78,214 +95,490 @@ class Tutor_form extends Component {
             <View style={{ flex: 1 }}>
                 <ImageBackground
                     source={Icon.Background_Image}
-                    // resizeMethod="resize"
-                    // resizeMode="contain"
                     style={{ height: hp('100%') }}
                 >
-                    <View style={{ width: wp('100%'), height: hp('5%'), marginTop: hp('5%'), justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 18, }}>
-                            User Name:{this.state.name}
-                        </Text>
+                    <View style={{ marginTop: wp('10%'), marginHorizontal: hp('2%') }}>
+                        <Text style={{ fontSize: 18, color: 'white' }}>Select a community.</Text>
+                        <Text style={{ fontSize: 18, color: 'white' }}>you can select max 3 or min 1 community.</Text>
                     </View>
-                    <View style={{ marginTop: hp('5%'), justifyContent: 'center', alignItems: 'center' }}>
-                        <Text>
-                            Select a Community
-                      </Text>
-                    </View>
-                    <Dropdown
-                        itemCount={11}
-                        containerStyle={{ marginHorizontal: wp('5%') }}
-                        label='Comunity'
-                        data={data}
-                    />
-                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <View style={{ marginTop: hp('1%'), width: wp('90%') }}>
-                            <Text style={{ fontSize: 18 }}>You Can Select Maximum 3 Option:-</Text>
+
+                    {/* tech start */}
+                    <View>
+                        <View style={{ marginHorizontal: wp('2%'), flexDirection: 'row', borderBottomWidth: wp('0.2%') }}>
+                            <TouchableOpacity onPress={() => { this.Technology() }}>
+                                <Image
+                                    source={this.state.Technology == false ? Icon.Uncheck_Icon : Icon.Check_Icon}
+                                    resizeMethod="resize"
+                                    resizeMode="contain"
+                                    style={{ width: wp('6%') }}
+                                />
+                            </TouchableOpacity>
+                            <View style={{ justifyContent: 'center', alignItems: 'center', marginLeft: wp('2%') }}>
+                                <Text>Technology</Text>
+                            </View>
                         </View>
-                    </View>
-
-                    <View style={{ marginVertical: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
-                        <TouchableOpacity
-                            onPress={() => { this.rate_() }}
-                        >
-                            <Image
-                                source={this.state.rate == false ? Icon.Uncheck_Icon : Icon.Check_Icon}
-                                resizeMode="contain"
-                                resizeMethod="resize"
-                                style={{ width: wp('8%'), marginLeft: wp('5%') }}
-                            />
-                        </TouchableOpacity>
-
-                        <Text>
-                            Rate Yourself
-                        </Text>
-
-                    </View>
-
-                    <View style={{ marginVertical: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
-                        <TouchableOpacity
-                            onPress={() => { this.price() }}
-                        >
-                            <Image
-                                source={this.state.price == false ? Icon.Uncheck_Icon : Icon.Check_Icon}
-                                resizeMode="contain"
-                                resizeMode="contain"
-                                resizeMethod="resize"
-                                style={{ width: wp('8%'), marginLeft: wp('5%') }}
-                            />
-                        </TouchableOpacity>
-                        <Text>
-                            Price or Free
-                        </Text>
                         {
-                            this.state.price == true ?
+                            this.state.isTechnology_selected == true ?
 
-
-                                <View>
-                                    <View style={{
-                                        marginLeft: wp('5%'),
-                                        flexDirection: 'row',
-                                        // backgroundColor:'blue',
-                                        width: wp('40%'), justifyContent: 'space-between',
-                                    }}>
-                                        <View style={{
-                                            flexDirection: 'row',
-                                            // backgroundColor:'gray', 
-                                            width: wp('15%'),
-                                            justifyContent: 'space-between', alignItems: 'center'
-                                        }}>
-                                            <TouchableOpacity
-                                                onPress={() => { this.Price_() }}
-                                            >
-                                                <Image
-                                                    source={
-                                                        this.state.Price_ == true ?
-                                                            Icon.Radioon_Icon
-                                                            :
-                                                            Icon.Radiooff_Icon
-                                                    }
-                                                    resizeMethod="resize"
-                                                    resizeMode="contain"
-                                                    style={{
-                                                        // backgroundColor:'yellow',
-                                                        width: wp('5%'), height: hp('3%')
-                                                    }}
-                                                />
-                                            </TouchableOpacity>
-                                            <Text style={{
-                                                // backgroundColor:'blue'
-                                            }}>
-                                                Price
+                                <View style={{ marginHorizontal: wp('10%'), }}>
+                                    <View style={{}}>
+                                        <Text style={{ fontSize: 18 }}>
+                                            Description
+                        </Text>
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Rate yourself
                             </Text>
+
                                         </View>
-                                        <View style={{
-                                            flexDirection: 'row',
-                                            // backgroundColor:'gray', 
-                                            width: wp('20%'),
-                                            justifyContent: 'space-between', alignItems: 'center', marginRight: wp('2%'),
-                                        }}>
-                                            <TouchableOpacity
-                                                onPress={() => { this.Free_() }}
-                                            >
-                                                <Image
-                                                    source={
-                                                        this.state.Free_ == true ?
-                                                            Icon.Radioon_Icon :
-                                                            Icon.Radiooff_Icon
-                                                    }
-                                                    resizeMethod="resize"
-                                                    resizeMode="contain"
-                                                    style={{
-                                                        // backgroundColor:'yellow',
-                                                        width: wp('5%'), height: hp('3%')
-                                                    }}
-                                                />
-                                            </TouchableOpacity>
-                                            <Text style={{
-                                                // backgroundColor:'blue'
-                                            }}>
-                                                Free
-                            </Text>
+                                        <View>
+                                            <Text>
+                                                Star rating
+                                </Text>
                                         </View>
                                     </View>
+
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Charge
+                            </Text>
+
+                                        </View>
+                                        <View>
+                                            <View style={{ flexDirection: 'row', width: wp('50%'), justifyContent: 'space-between' }}>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            source={Icon.Radiooff_Icon}
+                                                            resizeMode="contain"
+                                                            resizeMethod="resize"
+                                                            style={{ width: wp('4%') }}
+                                                        />
+                                                    </TouchableOpacity>
+                                                    <Text style={{ marginLeft: wp('1%') }}>
+                                                        Free
+                                   </Text>
+                                                </View>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            source={Icon.Radiooff_Icon}
+                                                            resizeMode="contain"
+                                                            resizeMethod="resize"
+                                                            style={{ width: wp('4%') }}
+                                                        />
+                                                    </TouchableOpacity>
+                                                    <Text style={{ marginLeft: wp('1%') }}>
+                                                        Charge
+                                   </Text>
+                                                </View>
+                                            </View>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Share 15 Sec video
+                            </Text>
+
+                                        </View>
+                                    </View>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: hp('1%') }}>
+                                        <TouchableOpacity style={{ backgroundColor: 'gray', width: wp('20%'), height: hp('5%'), justifyContent: 'center', alignItems: 'center', borderRadius: 10, }}>
+                                            <Text>
+                                                Upload
+                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                question if any :-
+                            </Text>
+
+                                        </View>
+                                    </View>
+
                                 </View>
                                 :
                                 null
                         }
-
-
                     </View>
-                    {
-                        this.state.Price_ == true ?
-
-                            <View style={{ width: wp('100%'), justifyContent: 'center', alignItems: 'center', }}>
-                                <View
-                                    style={{ borderColor: 'grey', width: wp('40%'), borderRadius: 10, borderWidth: wp('0.5%'), }}
-                                >
-                                    <TextInput />
-                                </View>
-                                <View>
-                                    <TouchableOpacity
-                                        onPress={() => { this.onDone_() }}
-                                        style={{ marginTop: hp('2%'), backgroundColor: 'lightgreen', borderRadius: 10, height: hp('5%'), width: wp('35%'), justifyContent: 'center', alignItems: 'center' }}>
-                                        <Text>
-                                            Done
-                            </Text>
-                                    </TouchableOpacity>
-                                </View>
+                    {/* tech end */}
+                    {/* sport start */}
+                    <View>
+                        <View style={{ marginHorizontal: wp('2%'), flexDirection: 'row', borderBottomWidth: wp('0.2%') }}>
+                            <TouchableOpacity onPress={() => { this.Sport() }}>
+                                <Image
+                                    source={this.state.Sport == false ? Icon.Uncheck_Icon : Icon.Check_Icon}
+                                    resizeMethod="resize"
+                                    resizeMode="contain"
+                                    style={{ width: wp('6%') }}
+                                />
+                            </TouchableOpacity>
+                            <View style={{ justifyContent: 'center', alignItems: 'center', marginLeft: wp('2%') }}>
+                                <Text>Sport</Text>
                             </View>
-                            :
-                            null
-                    }
+                        </View>
+                        {
+                            this.state.isSport_selected == true ?
 
-
-                    <View style={{ marginVertical: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
-                        <TouchableOpacity
-                            onPress={() => { this.share() }}                 >
-
-                            <Image
-                                source={this.state.share == false ? Icon.Uncheck_Icon : Icon.Check_Icon}
-                                resizeMode="contain"
-                                resizeMode="contain"
-                                resizeMethod="resize"
-                                style={{ width: wp('8%'), marginLeft: wp('5%') }}
-                            />
-                        </TouchableOpacity>
-                        <Text>
-                            Share a 15 Sec Clip(Tip etc)
+                                <View style={{ marginHorizontal: wp('10%'), }}>
+                                    <View style={{}}>
+                                        <Text style={{ fontSize: 18 }}>
+                                            Description
                         </Text>
-
-
-                    </View>
-
-                    <View style={{ marginVertical: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
-                        <TouchableOpacity onPress={() => { this.question() }} style={{}}                        >
-
-                            <Image
-                                source={this.state.question == false ? Icon.Uncheck_Icon : Icon.Check_Icon}
-                                resizeMode="contain"
-                                resizeMode="contain"
-                                resizeMethod="resize"
-                                style={{ width: wp('8%'), marginLeft: wp('5%') }}
-                            />
-                        </TouchableOpacity>
-                        <Text>
-                            Q if any to decide learner
-                        </Text>
-
-
-                    </View>
-
-                    <View style={{ justifyContent: 'center', alignItems: 'center', marginVertical: hp('5%') }}>
-                        <TouchableOpacity style={{ backgroundColor: 'lightgreen', height: hp('5%'), width: wp('35%'), borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
-                            <Text style={{ fontSize: 18 }}>
-                                Proceed
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Rate yourself
                             </Text>
-                        </TouchableOpacity>
+
+                                        </View>
+                                        <View>
+                                            <Text>
+                                                Star rating
+                                </Text>
+                                        </View>
+                                    </View>
+
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Charge
+                            </Text>
+
+                                        </View>
+                                        <View>
+                                            <View style={{ flexDirection: 'row', width: wp('50%'), justifyContent: 'space-between' }}>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            source={Icon.Radiooff_Icon}
+                                                            resizeMode="contain"
+                                                            resizeMethod="resize"
+                                                            style={{ width: wp('4%') }}
+                                                        />
+                                                    </TouchableOpacity>
+                                                    <Text style={{ marginLeft: wp('1%') }}>
+                                                        Free
+                                   </Text>
+                                                </View>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            source={Icon.Radiooff_Icon}
+                                                            resizeMode="contain"
+                                                            resizeMethod="resize"
+                                                            style={{ width: wp('4%') }}
+                                                        />
+                                                    </TouchableOpacity>
+                                                    <Text style={{ marginLeft: wp('1%') }}>
+                                                        Charge
+                                   </Text>
+                                                </View>
+                                            </View>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Share 15 Sec video
+                            </Text>
+
+                                        </View>
+                                    </View>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: hp('1%') }}>
+                                        <TouchableOpacity style={{ backgroundColor: 'gray', width: wp('20%'), height: hp('5%'), justifyContent: 'center', alignItems: 'center', borderRadius: 10, }}>
+                                            <Text>
+                                                Upload
+                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                question if any :-
+                            </Text>
+
+                                        </View>
+                                    </View>
+
+                                </View>
+                                :
+                                null
+                        }
                     </View>
+                    {/* sport end */}
+                    {/* cooking start */}
+                    <View>
+                        <View style={{ marginHorizontal: wp('2%'), flexDirection: 'row', borderBottomWidth: wp('0.2%') }}>
+                            <TouchableOpacity onPress={() => { this.Cooking() }}>
+                                <Image
+                                    source={this.state.Cooking == false ? Icon.Uncheck_Icon : Icon.Check_Icon}
+                                    resizeMethod="resize"
+                                    resizeMode="contain"
+                                    style={{ width: wp('6%') }}
+                                />
+                            </TouchableOpacity>
+                            <View style={{ justifyContent: 'center', alignItems: 'center', marginLeft: wp('2%') }}>
+                                <Text>Cooking</Text>
+                            </View>
+                        </View>
+                        {
+                            this.state.isCooking_selected == true ?
 
+                                <View style={{ marginHorizontal: wp('10%'), }}>
+                                    <View style={{}}>
+                                        <Text style={{ fontSize: 18 }}>
+                                            Description
+                        </Text>
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Rate yourself
+                            </Text>
 
+                                        </View>
+                                        <View>
+                                            <Text>
+                                                Star rating
+                                </Text>
+                                        </View>
+                                    </View>
 
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Charge
+                            </Text>
+
+                                        </View>
+                                        <View>
+                                            <View style={{ flexDirection: 'row', width: wp('50%'), justifyContent: 'space-between' }}>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            source={Icon.Radiooff_Icon}
+                                                            resizeMode="contain"
+                                                            resizeMethod="resize"
+                                                            style={{ width: wp('4%') }}
+                                                        />
+                                                    </TouchableOpacity>
+                                                    <Text style={{ marginLeft: wp('1%') }}>
+                                                        Free
+                                   </Text>
+                                                </View>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            source={Icon.Radiooff_Icon}
+                                                            resizeMode="contain"
+                                                            resizeMethod="resize"
+                                                            style={{ width: wp('4%') }}
+                                                        />
+                                                    </TouchableOpacity>
+                                                    <Text style={{ marginLeft: wp('1%') }}>
+                                                        Charge
+                                   </Text>
+                                                </View>
+                                            </View>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Share 15 Sec video
+                            </Text>
+
+                                        </View>
+                                    </View>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: hp('1%') }}>
+                                        <TouchableOpacity style={{ backgroundColor: 'gray', width: wp('20%'), height: hp('5%'), justifyContent: 'center', alignItems: 'center', borderRadius: 10, }}>
+                                            <Text>
+                                                Upload
+                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                question if any :-
+                            </Text>
+
+                                        </View>
+                                    </View>
+
+                                </View>
+                                :
+                                null
+                        }
+                    </View>
+                    {/* cooking end */}
+
+                    {/* Dancing start */}
+                    <View>
+                        <View style={{ marginHorizontal: wp('2%'), flexDirection: 'row', borderBottomWidth: wp('0.2%') }}>
+                            <TouchableOpacity onPress={() => { this.Dancing() }}>
+                                <Image
+                                    source={this.state.Dancing == false ? Icon.Uncheck_Icon : Icon.Check_Icon}
+                                    resizeMethod="resize"
+                                    resizeMode="contain"
+                                    style={{ width: wp('6%') }}
+                                />
+                            </TouchableOpacity>
+                            <View style={{ justifyContent: 'center', alignItems: 'center', marginLeft: wp('2%') }}>
+                                <Text>Dancing</Text>
+                            </View>
+                        </View>
+                        {
+                            this.state.isDancing_selected == true ?
+
+                                <View style={{ marginHorizontal: wp('10%'), }}>
+                                    <View style={{}}>
+                                        <Text style={{ fontSize: 18 }}>
+                                            Description
+                        </Text>
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Rate yourself
+                            </Text>
+
+                                        </View>
+                                        <View>
+                                            <Text>
+                                                Star rating
+                                </Text>
+                                        </View>
+                                    </View>
+
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Charge
+                            </Text>
+
+                                        </View>
+                                        <View>
+                                            <View style={{ flexDirection: 'row', width: wp('50%'), justifyContent: 'space-between' }}>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            source={Icon.Radiooff_Icon}
+                                                            resizeMode="contain"
+                                                            resizeMethod="resize"
+                                                            style={{ width: wp('4%') }}
+                                                        />
+                                                    </TouchableOpacity>
+                                                    <Text style={{ marginLeft: wp('1%') }}>
+                                                        Free
+                                   </Text>
+                                                </View>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            source={Icon.Radiooff_Icon}
+                                                            resizeMode="contain"
+                                                            resizeMethod="resize"
+                                                            style={{ width: wp('4%') }}
+                                                        />
+                                                    </TouchableOpacity>
+                                                    <Text style={{ marginLeft: wp('1%') }}>
+                                                        Charge
+                                   </Text>
+                                                </View>
+                                            </View>
+                                        </View>
+
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                Share 15 Sec video
+                            </Text>
+
+                                        </View>
+                                    </View>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: hp('1%') }}>
+                                        <TouchableOpacity style={{ backgroundColor: 'gray', width: wp('20%'), height: hp('5%'), justifyContent: 'center', alignItems: 'center', borderRadius: 10, }}>
+                                            <Text>
+                                                Upload
+                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View>
+                                        <View style={{ marginTop: hp('1%'), flexDirection: 'row', alignItems: 'center' }}>
+                                            <View
+                                                style={{ backgroundColor: 'black', height: hp('1%'), width: wp('2%'), borderRadius: 100 }}
+                                            />
+                                            <Text style={{ marginLeft: wp('1%') }}>
+                                                question if any :-
+                            </Text>
+
+                                        </View>
+                                    </View>
+
+                                </View>
+                                :
+                                null
+                        }
+                    </View>
+                    {/* cooking end */}
                 </ImageBackground>
 
             </View>

@@ -1,94 +1,37 @@
 import React, { Component } from 'react'
 import {  StyleSheet, Text, View ,TouchableOpacity} from 'react-native'
+import Icon from '../src/Assets/Icon'
+
+import StarRating from 'react-native-star-rating';
  
-import Swiper from 'react-native-swiper'
-// import { TouchableOpacity } from 'react-native-gesture-handler'
  
-const styles = StyleSheet.create({
-  wrapper: {},
-  slide1: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB'
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5'
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9'
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold'
+class GeneralStarExample extends Component {
+ 
+  constructor(props) {
+    super(props);
+    this.state = {
+      starCount: 3.5
+    };
   }
-})
  
-export default class SwiperComponent extends Component {
+  onStarRatingPress(rating) {
+    this.setState({
+      starCount: rating
+    });
+  }
+ 
   render() {
     return (
-      <Swiper style={styles.wrapper} showsButtons={true}>
-        <View style={styles.slide1}>
-        <TouchableOpacity style={styles.text}><Text>fnfg</Text></TouchableOpacity>
-
-          <Text style={styles.text}>Hello Swiper</Text>
-        </View>
-        <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-      </Swiper>
-    )
+      <StarRating
+      emptyStar={Icon.Check_Icon}
+      fullStar={Icon.Uncheck_Icon}
+        disabled={false}
+        maxStars={3}
+        rating={this.state.starCount}
+        selectedStar={(rating) => this.onStarRatingPress(rating)}
+      />
+    );
   }
 }
+ 
+export default GeneralStarExample
