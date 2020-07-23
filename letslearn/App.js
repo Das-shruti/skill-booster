@@ -16,6 +16,7 @@ import Test from './src/Test'
 import Interducing from './src/Screen/Interducing'
 import WelcomeTutor from './src/Screen/WelcomeTutor'
 import Tutor_form from './src/Screen/Tutor_form'
+import Selected_community from './src/Screen/Selected_community'
 const App: () => React$Node = () => {
   return (
     <>
